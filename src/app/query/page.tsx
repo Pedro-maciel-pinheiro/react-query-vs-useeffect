@@ -18,8 +18,8 @@ import { useState } from 'react';
 
 
 export default function page() {
-  const [selectedMake, setSelectedMake] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
+  const [selectedMake, setSelectedMake] = useState<string>('');
+  const [selectedYear, setSelectedYear] = useState<string>('');
 
   const { data: makes, isLoading, error } = useQuery({
     queryKey: ['makes'],
