@@ -1,16 +1,18 @@
-// React.query.types
+export interface QueryProviderProps {
+  children:React.ReactNode
+}
+
+
+// React.query.types // React.useEffect.types
 
 
 
-
-// React.useEffect.types
-
-export interface MakeAndYear {
+export interface MakeAndYearProps {
   makeId: string;
   year: string;
 }
 
-export interface Make {
+export interface MakeProps {
   MakeId: number;
   MakeName: string;
 }
@@ -20,9 +22,9 @@ export interface VehicleProps {
   Model_Name: string;
 }
 
-export interface ParamsProps {
-  params: {
+export interface ParamsPromiseProps {
+  params: Promise<{
     makeId: string;
     year: string;
-  };
+  }>;
 }

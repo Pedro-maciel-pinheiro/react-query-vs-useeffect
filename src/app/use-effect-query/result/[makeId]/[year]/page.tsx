@@ -1,15 +1,16 @@
 import Loading from '@/components/loading'
 import { Card, CardContent } from '@/components/ui/card'
-import { MakeAndYear, ParamsProps, VehicleProps } from '@/types'
-import React, { Suspense } from 'react'
+import {  MakeAndYearProps, ParamsPromiseProps, VehicleProps } from '@/types'
+import React, { Suspense, use } from 'react'
 
 
 
-async function VehicleResults({ makeId, year }: MakeAndYear) {
+async function VehicleResults({ makeId, year }: MakeAndYearProps) {
   const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${makeId}/modelyear/${year}?format=json`)
   const data = await response.json()
   const vehicles = data.Results
-  console.log(vehicles)
+  
+
   return (
     <section className='min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8'>
       <div className='max-w-7xl mx-auto'>
@@ -33,14 +34,12 @@ async function VehicleResults({ makeId, year }: MakeAndYear) {
   )
 }
 
-
-
-export default async function Resultpage({ params }: ParamsProps) {
-
+export default  function Resultpage({ params }: ParamsPromiseProps) {
+    const resolvedParams = use(params)
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <VehicleResults makeId={params.makeId} year={params.year} />
+        <VehicleResults makeId={resolvedParams.makeId} year={resolvedParams.year} />
       </Suspense>
     </>
   )

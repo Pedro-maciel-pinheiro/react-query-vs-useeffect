@@ -10,13 +10,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Make } from '@/types';
+import { MakeProps } from '@/types';
+
 import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function page() {
-  const [makes, setMakes] = useState<Make[]>([]);
+  const [makes, setMakes] = useState<MakeProps[]>([]);
   const [selectedMake, setSelectedMake] = useState<string>('');
   const [selectedYear, setSelectedYear] = useState<string>('');
   const [loading, setIsLoading] = useState<boolean>(true);
